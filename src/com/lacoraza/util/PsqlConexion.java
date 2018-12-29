@@ -4,20 +4,21 @@
  * and open the template in the editor.
  */
 package com.lacoraza.util;
-
+/*
 import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
-
+*/
 /**
  *
  * @author Alvaro
  */
+
 public class PsqlConexion {
-    
+/*
     public Connection conectar(){
         Connection conexion = null;
         String url = "jdbc:postgresql://localhost/LACORAZA";
@@ -52,9 +53,5 @@ public class PsqlConexion {
         PsqlConexion cn = new PsqlConexion();
         cn.conectar();
     }
-    
-    
-    
-    
-    
+*/
 }
