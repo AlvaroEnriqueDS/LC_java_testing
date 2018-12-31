@@ -5,7 +5,7 @@ public class Lista
 	protected ArrayList lista = new ArrayList();
 	private boolean anterior;
 	private int disponible;
-	/*tama�o del 1 al numPagina*/
+	/*tamaño del 1 al numPagina*/
 	private int numPagina;
 	private boolean siguiente;
 	private int tamPagina;
