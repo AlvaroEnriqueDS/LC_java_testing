@@ -23,15 +23,18 @@ public class PsqlConexion {
 
     public Connection conectar(){
         Connection conexion = null;
-        String url = "jdbc:postgresql://localhost/LACORAZA";
+        String url = "jdbc:postgresql://localhost:5432/LACORAZA";
         Properties propiedades  = new Properties();
         propiedades.setProperty("user", "postgres");
         propiedades.setProperty("password", "asd020");
         
         try {
+            Class.forName("org.postgresql.Driver");
             conexion = (Connection) DriverManager.getConnection(url, propiedades);
         } catch (SQLException sqle) {
             System.out.println(sqle.getMessage());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
         return conexion;
     }

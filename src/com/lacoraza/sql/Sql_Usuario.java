@@ -25,7 +25,7 @@ public class Sql_Usuario {
         //HACEMOS LA SENTENCIA PARA INSERTAR DATOS EN LA TABLA ACCESO
         //===========================================================
         String sql;
-        sql ="select p.nombre, p.apellido from cliente c INNER JOIN persona p ON c.idcliente=p.cliente_idcliente WHERE c.correoelectronico='"+log+"' AND c.contraseÑa='"+pas+"';";
+        sql ="select p.nombre, p.apellido, c.correoelectronico from cliente c INNER JOIN persona p ON c.idcliente=p.cliente_idcliente WHERE c.correoelectronico='"+log+"' AND c.contraseÑa='"+pas+"';";
         try {
             con  = conectar.conectar();
             stm = con.prepareStatement(sql);
@@ -39,10 +39,10 @@ public class Sql_Usuario {
                 //=======================
                 obj.setNombre(rs.getString(1));
                 obj.setApellido(rs.getString(2));
+                obj.setCorreo(rs.getString(3));
             }
-            System.out.println("hola "+log+" contra "+pas);
-            System.out.printf(obj.getNombre()+"- - - -"+obj.getApellido());
             conectar.cerrar(con, stm, rs);
+            System.out.println(obj.getNombre()+"- SQL_USUARIO -"+obj.getApellido());
 
         } catch (Exception ex) {
             ex.printStackTrace();

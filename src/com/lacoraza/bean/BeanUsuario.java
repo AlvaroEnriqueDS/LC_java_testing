@@ -4,7 +4,7 @@ import com.lacoraza.util.Bean;
 
 //AGREGAMOS A LA CLASE EL "extends BeanCliente"
 //======================================
-public class BeanUsuario extends Bean {
+public class BeanUsuario extends BeanCliente {
 
     //DECLARAMOS LAS VARIABLES
     //========================

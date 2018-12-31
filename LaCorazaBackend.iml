@@ -20,5 +20,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 8.5.32" level="application_server_libraries" />
+    <orderEntry type="library" name="postgresql-42.2.5" level="application" />
   </component>
 </module>

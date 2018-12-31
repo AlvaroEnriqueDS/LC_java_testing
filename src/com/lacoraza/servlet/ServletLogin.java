@@ -26,6 +26,7 @@ public class ServletLogin extends javax.servlet.http.HttpServlet {
         //============================
         log=(String)request.getParameter("txtUsu");
         pas=(String)request.getParameter("txtPas");
+        System.out.println(log+"- SERVLETLOGIN -"+pas);
         //SE INSTANCIA A LA CLASE Sql_Usuario
         //===================================
         Sql_Usuario obj=new Sql_Usuario();
@@ -36,24 +37,26 @@ public class ServletLogin extends javax.servlet.http.HttpServlet {
         //==================
         HttpSession misession = request.getSession(true);
 
+
+
         try {
             //VERIFICAMOS SI EXISTE EL USUARIO INVOCANDO AL METODO obtenerUsuario
             //EL CUAL DEBE DE DEVOLVER UN BEAN
             //====================================================================================================
-            if(obj.obtenerUsuario(log, pas)!= null) {
+            bean = obj.obtenerUsuario(log, pas);
+            if(bean != null) {
                 //RECUPERAMOS EL BEAN TRAIDO DEL METODO obtenerUsuario
                 //====================================================
-                bean = obj.obtenerUsuario(log, pas);
-                System.out.println(log+"---"+pas);
+                System.out.println(bean.getNombre()+"- SERVLETLOGIN_BEAN -"+bean.getApellido());
                 //CREAMOS UN ATRIBUTO DE SESSION "nombres" Y LE DAMOS
                 //LOS DATOS DEL NOMBRE, APELLIDO PATERNO Y MATERNO CONCATENADOS
                 //=================================================================================================================
                 misession.setAttribute("nombres", bean.getNombre()); //+" "+bean.getApePat()+" "+bean.getApeMat());
                 misession.setAttribute("apellido", bean.getApellido());
                 //misession.setAttribute("correo", bean.getCorreo());
-                response.sendRedirect("/index.html");
-            }else{
                 response.sendRedirect("/out.jsp");
+            }else{
+                response.sendRedirect("/index.html");
             }
         }catch (Exception e) {
             System.out.println("HOLA ESTE ERROR ESTA EN SERVLETLOGIN "+e);

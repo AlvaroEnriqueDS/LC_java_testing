@@ -7,6 +7,9 @@
         <element id="directory" name="classes">
           <element id="module-output" name="LaCorazaBackend" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application" name="postgresql-42.2.5" />
+        </element>
       </element>
     </root>
   </artifact>
