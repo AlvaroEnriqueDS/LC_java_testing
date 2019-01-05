@@ -41,7 +41,7 @@
         <div class="row">		
 			
            <div class="col-lg-6 container_btn1" >
-            <a href="index.jsp" class="btn-ghost ">Volver a inicio</a>
+            <a href="index.html" class="btn-ghost ">Volver a inicio</a>
           </div>
 
         </div>

@@ -10,7 +10,6 @@
         <servlet-name>ServletLogin</servlet-name>
         <servlet-class>com.lacoraza.servlet.ServletLogin</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/Perfil/login</url-pattern>
