@@ -37,10 +37,10 @@
       <div class="fondo-producto"></div>
       <main class="perfil_login">
         <h2 class="tittle-login tipografia1">Ingreso</h2>
-        <form class="ingreso tipografia2" action="">
-          <input class="ingreso-item" type="email" placeholder="Correo">
-          <input class="ingreso-item" type="password" placeholder="Contraseña">
-          <input class="bottom" type="submit" placeholder="Usuario">
+        <form class="ingreso tipografia2" action="login" method="post">
+          <input class="ingreso-item" type="email" placeholder="Correo" name="txtUsu" required>
+          <input class="ingreso-item" type="password" placeholder="Contraseña" name="txtPas" required>
+          <input class="bottom" type="submit" placeholder="Usuario" name="btnIngresar" value="Ingresar">
         </form>
         <h2 class="tittle-login tipografia1">Registro</h2>
         <form class="registro tipografia2" action="">
@@ -49,7 +49,7 @@
           <input class="registro-item" type="email" placeholder="Correo">
           <input class="registro-item" type="password" placeholder="Contraseña">
           <input class="registro-item" type="text" placeholder="Repetir Contraseña">
-          <input class="bottom" type="submit">
+          <input class="bottom" type="submit" value="Registrar">
         </form>
       </main>
       <div class="separador2"></div>
