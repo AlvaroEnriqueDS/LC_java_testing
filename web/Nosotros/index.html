@@ -9,13 +9,13 @@
     <meta property="og:title" content="Home">
     <meta property="og:description" content="Pagina inicial de EDboilerplate">
     <meta property="og:image" content="https://ed.team/sites/default/files/EDboilerplate-logo.png">
-    <link rel="stylesheet" href="/css/styles.css?t=1546732404499">
+    <link rel="stylesheet" href="/css/styles.css?t=1546895100775">
     <link rel="shortcut icon" href="/assets/img/logo.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Anton|Raleway" rel="stylesheet">
   </head>
   <body>
-    <header class="main-header">
-      <div class="main-header__item1"><a href="/"><img class="imagen-menu" src="/assets/img/logo.png" alt=""></a></div>
+    <header class="main-header" id="vuemenu">
+      <div class="main-header__item1"><a href="/" v-on:click="loguearse"><img class="imagen-menu" src="/assets/img/logo.png" alt=""></a></div>
       <div class="main-header__item2" id="nav-main">
         <nav class="main-menu" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation" id="main-menu">
           <ul class="main-menu-list" id="main-list">
@@ -27,7 +27,7 @@
           </ul>
         </nav>
       </div>
-      <div class="main-header__item3" id="header-items"><a href="/Carrito" id="header-items-1"><i class="fas fa-shopping-cart fa-2x"></i></a><a href="/Perfil" id="header-items-2"><i class="fas fa-user fa-2x"></i></a><a href="/Ingreso" id="header-items-3"><i class="fas fa-sign-out-alt fa-2x"></i></a></div>
+      <div class="main-header__item3" id="header-items"><a href="/Carrito" id="header-items-1"><i class="fas fa-shopping-cart fa-2x"></i></a><a href="/Perfil" id="header-items-2"><i class="fas fa-user fa-2x"></i></a><a v-on:click="desloguearse" v-if="estadoSesion === 'on'" id="header-items-3"><i class="fas fa-sign-out-alt fa-2x"></i></a></div>
       <div class="main-header__item4" id="boton-main">
         <div class="main-menu-toggle"></div>
       </div>
@@ -53,7 +53,8 @@
           <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quidem facilis suscipit </p>
         </div>
       </footer>
-    </div>
-    <script src="/js/scripts-min.js?t=1546732404499"></script>
+    </div><script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/scripts-min.js?t=1546895100775"></script>
   </body>
 </html>

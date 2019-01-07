@@ -32,6 +32,37 @@ var showMenu = function showMenu(toggleId, id1, id2, id3, id35, id4, navId) {
 };
 showMenu('boton-main', 'header-items', 'header-items-1', 'header-items-2', "header-items-3", 'main-list', 'nav-main');
 
+new Vue({
+  el: '#vuemenu',
+  data: {
+    menu: "hola gente",
+    estadoSesion: 'off'
+  },
+  mounted: function mounted() {
+
+    if (localStorage.estadoSesion === 'on') {
+      this.estadoSesion = localStorage.estadoSesion;
+    } else {
+      this.estadoSesion = localStorage.estadoSesion;
+    }
+  },
+
+
+  methods: {
+    desloguearse: function desloguearse() {
+      this.estadoSesion = 'off';
+      localStorage.clear();
+      alert("Cerró sesión");
+    },
+    loguearse: function loguearse() {
+      this.estadoSesion = 'on';
+      localStorage.estadoSesion = 'on';
+    }
+
+  }
+
+});
+
 },{"./modules/active-menu":2,"./modules/example":3}],2:[function(require,module,exports){
 'use strict';
 
