@@ -42,6 +42,7 @@ public class Sql_Usuario {
                 obj.setCorreo(rs.getString(3));
             }
             conectar.cerrar(con, stm, rs);
+            //probar
             System.out.println(obj.getNombre()+"- SQL_USUARIO -"+obj.getApellido());
 
         } catch (Exception ex) {

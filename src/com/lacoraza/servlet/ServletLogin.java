@@ -1,5 +1,7 @@
 package com.lacoraza.servlet;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,8 +26,11 @@ public class ServletLogin extends javax.servlet.http.HttpServlet {
         String log,pas;
         //OBTENEMOS PARAMETROS
         //============================
-        log=(String)request.getParameter("txtUsu");
-        pas=(String)request.getParameter("txtPas");
+        JsonObject data = new Gson().fromJson(request.getReader(),JsonObject.class);
+
+        log=data.get("correo").getAsString();
+        pas=data.get("contrasena").getAsString();
+        //SOUT DE VERIFICACION DE PASE DE DATOS
         System.out.println(log+"- SERVLETLOGIN -"+pas);
         //SE INSTANCIA A LA CLASE Sql_Usuario
         //===================================
@@ -53,10 +58,20 @@ public class ServletLogin extends javax.servlet.http.HttpServlet {
                 //=================================================================================================================
                 misession.setAttribute("nombres", bean.getNombre()); //+" "+bean.getApePat()+" "+bean.getApeMat());
                 misession.setAttribute("apellido", bean.getApellido());
-                //misession.setAttribute("correo", bean.getCorreo());
-                response.sendRedirect("/out.jsp");
+                misession.setAttribute("correo", bean.getCorreo());
+                String json = null;
+                json = new Gson().toJson(bean);
+                response.setContentType("aplication/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write(json);
+
             }else{
-                response.sendRedirect("/index.html");
+                String json = null;
+                BeanUsuario bean2=new BeanUsuario();
+                json = new Gson().toJson(bean2);
+                response.setContentType("aplication/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write(json);
             }
         }catch (Exception e) {
             System.out.println("HOLA ESTE ERROR ESTA EN SERVLETLOGIN "+e);
