@@ -16,8 +16,10 @@ var vm = new Vue({
                     console.log(response);
                     console.log(response.data.nombre);
                     datas = response;
-                    
+
                     this.nombre=response.data.nombre;
+                    this.nombre="dsdasdas"
+                    console.log(this.nombre);
                     if (response.data.nombre!==undefined){
                         localStorage.estadoSesion="on";
                     }

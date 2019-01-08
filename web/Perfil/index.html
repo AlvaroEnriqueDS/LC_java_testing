@@ -36,7 +36,7 @@
     <div class="layout"> 
       <div class="fondo-producto"></div>
       <main class="perfil_login" id="logueovue">
-        <h2 class="tittle-login tipografia1">Ingreso{{nombre}}</h2>
+        <h2 class="tittle-login tipografia1">Ingreso{{nombre}}{{correo}}</h2>
         <form class="ingreso tipografia2" @submit.prevent="sendForm">
           <input v-model='correo' class="ingreso-item" type="email" placeholder="Correo" name="txtUsu" required>
           <input v-model='contraseña'class="ingreso-item" type="password" placeholder="Contraseña" name="txtPas" required>
