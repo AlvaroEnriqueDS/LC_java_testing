@@ -72,7 +72,7 @@ new Vue({
 
       this.MensajeIngreso = '';
       this.MensajeLoading = 'Cargando ...';
-      axios.post('/Datos', {
+      axios.post('Perfil/login', {
         correo: this.correo,
         contrasena: this.contraseña
       }).then(function (response) {
