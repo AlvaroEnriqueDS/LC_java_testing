@@ -6,74 +6,88 @@
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@edteamlat">
-    <meta property="og:title" content="Contacto">
-    <meta property="og:description" content="Pagina de Contacto de LaCoraza">
+    <meta property="og:title" content="Perfil">
+    <meta property="og:description" content="Pagina de Perfil de LaCoraza">
     <meta property="og:image" content="https://ed.team/sites/default/files/EDboilerplate-logo.png">
-    <link rel="stylesheet" href="/css/styles.css?t=1546895100609">
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="shortcut icon" href="/assets/img/logo.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Anton|Raleway" rel="stylesheet">
   </head>
   <body>
-    <header class="main-header" id="vuemenu">
-      <div class="main-header__item1"><a href="/" v-on:click="loguearse"><img class="imagen-menu" src="/assets/img/logo.png" alt=""></a></div>
-      <div class="main-header__item2" id="nav-main">
-        <nav class="main-menu" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation" id="main-menu">
-          <ul class="main-menu-list" id="main-list">
-            <li class="main-menu__item" itemprop="url"><a class="main-menu__link" href="/" itemprop="name">Inicio</a></li>
-            <li class="main-menu__item" itemprop="url"><a class="main-menu__link" href="/Hombre" itemprop="name">Hombre</a></li>
-            <li class="main-menu__item" itemprop="url"><a class="main-menu__link" href="/Mujer" itemprop="name">Mujer</a></li>
-            <li class="main-menu__item" itemprop="url"><a class="main-menu__link" href="/Nosotros" itemprop="name">Nosotros</a></li>
-            <li class="main-menu__item" itemprop="url"><a class="main-menu__link" href="/Contacto" itemprop="name">Contacto</a></li>
-          </ul>
-        </nav>
+    <div id="vuemenu">
+      <header class="main-header">
+        <div class="main-header__item1"><a href="/"><img class="imagen-menu" src="/assets/img/logo.png" alt=""></a></div>
+        <div class="main-header__item2" id="nav-main">
+          <nav class="main-menu" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation" id="main-menu">
+            <ul class="main-menu-list" id="main-list">
+              <li class="main-menu__item" itemprop="url"><a class="main-menu__link" href="/" itemprop="name">Inicio</a></li>
+              <li class="main-menu__item" itemprop="url"><a class="main-menu__link" href="/Hombre" itemprop="name">Hombre</a></li>
+              <li class="main-menu__item" itemprop="url"><a class="main-menu__link" href="/Mujer" itemprop="name">Mujer</a></li>
+              <li class="main-menu__item" itemprop="url"><a class="main-menu__link" href="/Nosotros" itemprop="name">Nosotros</a></li>
+              <li class="main-menu__item" itemprop="url"><a class="main-menu__link" href="/Contacto" itemprop="name">Contacto</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="main-header__item3" id="header-items"><a href="/Carrito" id="header-items-1"><i class="fas fa-shopping-cart fa-2x" v-bind:class="{ color3: isActive }"></i></a><a href="/Perfil" id="header-items-2"><i class="fas fa-user fa-2x" v-bind:class="{ color3: isActive }"></i></a><a v-on:click="desloguearse" v-if="estadoSesion === 'on'" id="header-items-3"><i class="fas fa-sign-out-alt fa-2x"></i></a></div>
+        <div class="main-header__item4" v-on:click="activarShowMenu" id="boton-main">
+          <div class="main-menu-toggle"></div>
+        </div>
+        <div class="main-header__social"><a class="face" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a><a class="insta" href="https://www.instagram.com/?hl=es-la" target="_blank"><i class="fab fa-instagram"></i></a><a class="tres" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter-square"></i></a></div>
+      </header>
+      <div class="layout"> 
+        <div class="fondo-producto"></div>
+        <main class="perfil_login">
+          <template v-if="estadoSesion=='on'">
+            <h2 class="tittle-login tipografia1">Datos</h2>
+            <div class="ingreso tipografia2">
+              <p>correo: {{correo}}</p>
+              <p>nombre: {{nombre}}</p>
+            </div>
+            <h2 class="tittle-login tipografia1">Te puede Interesar</h2>
+            <div class="ingreso tipografia2"><a href="/Hombre">Ropa de Hombre</a><a href="/Mujer">Ropa de Mujer </a></div>
+          </template>
+          <template v-else>
+            <h2 class="tittle-login tipografia1">Ingresar</h2>
+            <form class="ingreso tipografia2" @submit.prevent="sendForm">
+              <input class="ingreso-item" required type="email" placeholder="Correo" v-model="correo">
+              <input class="ingreso-item" required type="password" placeholder="Contraseña" v-model="contraseña">
+              <p class="message tipografia2" v-if="MensajeLoading !== ''">{{MensajeLoading}}</p>
+              <p class="messageError tipografia1" v-if="MensajeIngreso !== ''">{{MensajeIngreso}}</p>
+              <input class="bottom" type="submit" placeholder="Usuario">
+            </form>
+            <h2 class="tittle-login tipografia1">Registro</h2>
+            <form class="registro tipografia2" action="">
+              <input class="registro-item" type="text" placeholder="Nombres">
+              <input class="registro-item" type="text" placeholder="Apellidos">
+              <input class="registro-item" type="email" placeholder="Correo">
+              <input class="registro-item" type="password" placeholder="Contraseña">
+              <input class="registro-item" type="text" placeholder="Repetir Contraseña">
+              <input class="bottom" type="submit">
+            </form>
+          </template>
+        </main>
+        <div class="separador2"></div>
+        <aside class="snow"></aside>
+        <footer class="footer">
+          <div class="footer-uno">
+            <p>Lorem ipsum dolor lorem ur, adipisicing elit. Minima doloribus nulla recusandae dolores doloremque distinctio ullam ipsum corrupti maiores accusantium quam facere, cum laudantium magnam harum dolor sunt explicabo modi.</p>
+            <ul>
+              <li>Jair Conislla Bocangel jair.conislla@ibernel.com</li>
+              <li>Diaz Alvaro el mas naki</li>
+            </ul>
+          </div>
+          <div class="footer-dos">
+            <div class="img-sello"><img src="/assets/img/Sello_1.1.png" alt="sello lacoraza"></div>
+            <div class="footer-dos-icon"><i class="far fa-copyright fa-3x"></i></div>
+          </div>
+          <div class="footer-tres">
+            <div class="img-map"><img src="https://cde.peru.com//ima/0/1/6/1/9/1619750/924x530/google-maps.jpg" alt=""></div>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt, quidem facilis suscipit </p>
+          </div>
+        </footer>
       </div>
-      <div class="main-header__item3" id="header-items"><a href="/Carrito" id="header-items-1"><i class="fas fa-shopping-cart fa-2x"></i></a><a href="/Perfil" id="header-items-2"><i class="fas fa-user fa-2x"></i></a><a v-on:click="desloguearse" v-if="estadoSesion === 'on'" id="header-items-3"><i class="fas fa-sign-out-alt fa-2x"></i></a></div>
-      <div class="main-header__item4" id="boton-main">
-        <div class="main-menu-toggle"></div>
-      </div>
-      <div class="main-header__social"><a class="face" href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-square"></i></a><a class="insta" href="https://www.instagram.com/?hl=es-la" target="_blank"><i class="fab fa-instagram"></i></a><a class="tres" href="https://twitter.com/" target="_blank"><i class="fab fa-twitter-square"></i></a></div>
-    </header>
-    <div class="layout"> 
-      <div class="fondo-producto"></div>
-      <main class="perfil_login" id="logueovue">
-        <h2 class="tittle-login tipografia1">Ingreso{{nombre}}{{correo}}</h2>
-        <form class="ingreso tipografia2" @submit.prevent="sendForm">
-          <input v-model='correo' class="ingreso-item" type="email" placeholder="Correo" name="txtUsu" required>
-          <input v-model='contraseña'class="ingreso-item" type="password" placeholder="Contraseña" name="txtPas" required>
-          <input class="bottom" type="submit" placeholder="Usuario" name="btnIngresar" value="Ingresar">
-        </form>
-        <h2 class="tittle-login tipografia1">Registro</h2>
-        <form class="registro tipografia2" action="">
-          <input class="registro-item" type="text" placeholder="Nombres">
-          <input class="registro-item" type="text" placeholder="Apellidos">
-          <input class="registro-item" type="email" placeholder="Correo">
-          <input class="registro-item" type="password" placeholder="Contraseña">
-          <input class="registro-item" type="text" placeholder="Repetir Contraseña">
-          <input class="bottom" type="submit" value="Registrar">
-        </form>
-      </main>
-      <div class="separador2"></div>
-      <aside class="snow"> </aside>
-      <footer class="footer">
-        <div class="footer-uno">
-          <p>Lorem ipsum dolor lorem ur, adipisicing elit. Minima doloribus nulla recusandae dolores doloremque distinctio ullam ipsum corrupti maiores accusantium quam facere, cum laudantium magnam harum dolor sunt explicabo modi.</p>
-          <ul>
-            <li>Jair Conislla Bocangel jair.conislla@ibernel.com</li>
-            <li>Diaz Alvaro el mas naki</li>
-          </ul>
-        </div>
-        <div class="footer-dos">
-          <div class="img-sello"><img src="/assets/img/Sello_1.1.png" alt="sello lacoraza"></div>
-          <div class="footer-dos-icon"><i class="far fa-copyright fa-3x"></i></div>
-        </div>
-        <div class="footer-tres">
-          <div class="img-map"><img src="https://cde.peru.com//ima/0/1/6/1/9/1619750/924x530/google-maps.jpg" alt=""></div>
-          <p>Lorem ipsum, dolor sit dfsfamet consectetur adipisicing elit. Incidunt, quidem facilis suscipit </p>
-        </div>
-      </footer>
     </div><script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js/scripts-min.js?t=1546895100609"></script>
-    <script src="/js/loguearse.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/logueo-min.js"></script>
   </body>
 </html>

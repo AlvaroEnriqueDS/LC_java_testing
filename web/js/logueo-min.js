@@ -1,19 +1,16 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var _example = require('./modules/example');
-
-var _activeMenu = require('./modules/active-menu');
-
-// saludo()
-// despedida()
-(0, _activeMenu.activeMenu)();
 new Vue({
   el: '#vuemenu',
   data: {
     menu: "hola gente",
-    estadoSesion: 'off'
-
+    estadoSesion: 'off',
+    nombre: 's',
+    correo: "",
+    contraseña: '',
+    MensajeIngreso: '',
+    MensajeLoading: ''
   },
   computed: {
     isActive: function isActive() {
@@ -25,12 +22,9 @@ new Vue({
     }
   },
   mounted: function mounted() {
-
-    if (localStorage.estadoSesion === 'on') {
-      this.estadoSesion = localStorage.estadoSesion;
-    } else {
-      this.estadoSesion = localStorage.estadoSesion;
-    }
+    this.nombre = localStorage.nombre;
+    this.correo = localStorage.correo;
+    this.estadoSesion = localStorage.estadoSesion;
   },
 
   methods: {
@@ -38,6 +32,8 @@ new Vue({
       this.estadoSesion = 'off';
       localStorage.clear();
       alert("Cerró sesión");
+      this.correo = '';
+      this.contraseña = '';
     },
     loguearse: function loguearse() {
       this.estadoSesion = 'on';
@@ -70,44 +66,47 @@ new Vue({
     },
     activarShowMenu: function activarShowMenu() {
       this.showMenu('boton-main', 'header-items', 'header-items-1', 'header-items-2', "header-items-3", 'main-list', 'nav-main');
+    },
+    sendForm: function sendForm(e) {
+      var _this = this;
+
+      this.MensajeIngreso = '';
+      this.MensajeLoading = 'Cargando ...';
+      axios.post('/Datos', {
+        correo: this.correo,
+        contrasena: this.contraseña
+      }).then(function (response) {
+        console.log(response);
+        console.log(response.data.nombre);
+
+        console.log(_this.nombre);
+
+        if (response.data.correo === _this.correo) {
+          _this.nombre = response.data.nombre;
+          _this.correo = response.data.correo;
+          localStorage.nombre = response.data.nombre;
+          localStorage.correo = response.data.correo;
+
+          localStorage.estadoSesion = "on";
+          _this.estadoSesion = "on";
+          alert("Ingresó incorrectamente");
+          _this.MensajeIngreso = '';
+          _this.MensajeLoading = '';
+        } else {
+          _this.contraseña = '';
+          _this.MensajeLoading = '';
+          _this.MensajeIngreso = "Datos Incorrectos";
+        }
+      }).catch(function (error) {
+        _this.MensajeLoading = '';
+        _this.MensajeIngreso = "Sucedio error en el servidor";
+        console.log(error);
+      });
     }
   }
 
 });
 
-},{"./modules/active-menu":2,"./modules/example":3}],2:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var activeMenu = exports.activeMenu = function activeMenu() {
-    var menu = document.getElementById('main-menu');
-    if (menu) {
-        var links = Array.from(menu.querySelectorAll('a'));
-        links.map(function (link) {
-            if (link.href === location.href || link.href === location.href.slice(0, -1)) link.classList.add('active');
-        });
-    }
-};
-
-},{}],3:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-// Este es un ejemplo de como exportar funciones desde un archivo
-// En index.js se importan estas funciones
-
-var saludo = exports.saludo = function saludo() {
-  console.log('Hola mundo');
-};
-
-var despedida = exports.despedida = function despedida() {
-  console.log('Adiós mundo');
-};
-
 },{}]},{},[1]);
 
-//# sourceMappingURL=scripts-min.js.map
+//# sourceMappingURL=logueo-min.js.map
