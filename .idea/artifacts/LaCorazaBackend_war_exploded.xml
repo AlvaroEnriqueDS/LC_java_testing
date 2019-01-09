@@ -9,6 +9,8 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="application" name="postgresql-42.2.5" />
+          <element id="file-copy" path="$PROJECT_DIR$/../gson-2.8.5.jar" />
+          <element id="file-copy" path="T:/jar/postgresql-42.2.5.jar" />
         </element>
       </element>
     </root>
