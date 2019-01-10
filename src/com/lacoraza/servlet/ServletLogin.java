@@ -21,7 +21,7 @@ import com.lacoraza.bean.BeanUsuario;
 
 public class ServletLogin extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        
+
         //DECLARAMOS LAS VARIABLES
         //========================
         String log,pas;

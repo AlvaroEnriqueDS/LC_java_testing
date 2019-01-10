@@ -805,12 +805,6 @@ th {
   color: #23af5b;
 }
 
-.ingreso .messageError {
-  text-align: center;
-  height: 25px;
-  color: red;
-}
-
 @media screen and (min-width: 814px) {
   .ingreso {
     -ms-flex-line-pack: top;
@@ -819,6 +813,12 @@ th {
         -ms-flex-order: 2;
             order: 2;
   }
+}
+
+.messageError {
+  text-align: center;
+  height: 25px;
+  color: red;
 }
 
 .registro {
@@ -2273,6 +2273,10 @@ th {
 
 .color3 {
   color: #23af5b;
+}
+
+.borderRojo {
+  border: 1.5px solid red;
 }
 
 .fondo_caja {

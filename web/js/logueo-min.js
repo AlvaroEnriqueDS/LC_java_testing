@@ -7,10 +7,22 @@ new Vue({
     menu: "hola gente",
     estadoSesion: 'off',
     nombre: 's',
+    apellido: '',
     correo: "",
     contraseña: '',
+    MensajeRegistro: '',
     MensajeIngreso: '',
-    MensajeLoading: ''
+    MensajeLoading1: '',
+    MensajeLoading2: '',
+    UsuarioIngreso: {
+      correo: '',
+      contrasena: '' },
+    UsuarioRegistro: {
+      nombres: '',
+      apellidos: '',
+      correo: '',
+      contrasena: '',
+      repetirContrasena: '' }
   },
   computed: {
     isActive: function isActive() {
@@ -67,20 +79,20 @@ new Vue({
     activarShowMenu: function activarShowMenu() {
       this.showMenu('boton-main', 'header-items', 'header-items-1', 'header-items-2', "header-items-3", 'main-list', 'nav-main');
     },
-    sendForm: function sendForm(e) {
+    sendFormIngreso: function sendFormIngreso(e) {
       var _this = this;
 
-      this.MensajeIngreso = '';
+      this.MensajeIngreso1 = '';
       this.MensajeLoading = 'Cargando ...';
-      axios.post('Perfil/login', {
-        correo: this.correo,
-        contrasena: this.contraseña
+      axios.post('/Perfil/login', {
+        correo: this.UsuarioIngreso.correo,
+        contrasena: this.UsuarioIngreso.contrasena
       }).then(function (response) {
         console.log(response);
         console.log(response.data.nombre);
 
         console.log(_this.nombre);
-
+        //CODIGO SI EL INGRESO ES CORRECTO
         if (response.data.correo === _this.correo) {
           _this.nombre = response.data.nombre;
           _this.correo = response.data.correo;
@@ -89,19 +101,81 @@ new Vue({
 
           localStorage.estadoSesion = "on";
           _this.estadoSesion = "on";
-          alert("Ingresó incorrectamente");
+          alert("Ingresó correctamente");
           _this.MensajeIngreso = '';
-          _this.MensajeLoading = '';
+          _this.MensajeLoading1 = '';
         } else {
           _this.contraseña = '';
-          _this.MensajeLoading = '';
+          _this.MensajeLoading1 = '';
           _this.MensajeIngreso = "Datos Incorrectos";
         }
       }).catch(function (error) {
-        _this.MensajeLoading = '';
+        _this.MensajeLoading1 = '';
         _this.MensajeIngreso = "Sucedio error en el servidor";
         console.log(error);
       });
+    },
+    sendFormRegistro: function sendFormRegistro(e) {
+      var _this2 = this;
+
+      this.MensajeRegistro = '';
+      this.MensajeLoading = 'Cargando ...';
+      axios.post('/Perfil/register', {
+        nombres: this.UsuarioRegistro.nombres,
+        apellidos: this.UsuarioRegistro.apellidos,
+        correo: this.UsuarioRegistro.correo,
+        contrasena: this.UsuarioRegistro.contrasena,
+        repetirContrasena: this.UsuarioRegistro.repetirContrasena
+      }).then(function (response) {
+        console.log(response);
+
+        //CODIGO SI EL REGISTRO ES CORRECTO
+        if (response.data.correo === _this2.correo) {
+          _this2.nombre = response.data.nombre;
+          _this2.correo = response.data.correo;
+          localStorage.nombre = response.data.nombre;
+          localStorage.correo = response.data.correo;
+          localStorage.apellido = response.data.apellido;
+          localStorage.estadoSesion = "on";
+          _this2.estadoSesion = "on";
+          alert("Ingresó incorrectamente");
+          _this2.MensajeRegistro = '';
+          _this2.MensajeLoading2 = '';
+        } else {
+          _this2.contraseña = '';
+          _this2.MensajeLoading2 = '';
+          _this2.MensajeRegistro = "No se pudo registrar";
+        }
+      }).catch(function (error) {
+        _this2.MensajeLoading2 = '';
+        _this2.MensajeRegistro = "Sucedio error en el servidor";
+        console.log(error);
+      });
+    },
+    validacion: function validacion(pass, repass) {
+      if (pass === repass && pass !== "") {
+        this.sendFormRegistro();
+      } else {
+        this.MensajeRegistro = "Contraseñas Desiguales";
+      }
+    },
+    validateData: function validateData(e) {
+      var input = e.target,
+          expression = void 0;
+
+      if (input.pattern) {
+        var regex = new RegExp(input.pattern);
+        expression = !regex.exec(input.value);
+      } else {
+        expression = !input.value;
+      }
+
+      if (expression) {
+        input.className += " borderRojo";
+        console.log("incorrecto");
+      } else {
+        console.log("correcto");
+      }
     }
   }
 

@@ -42,26 +42,29 @@
             <div class="ingreso tipografia2">
               <p>correo: {{correo}}</p>
               <p>nombre: {{nombre}}</p>
+              <p>apellido: {{apellido}}</p>
             </div>
             <h2 class="tittle-login tipografia1">Te puede Interesar</h2>
             <div class="ingreso tipografia2"><a href="/Hombre">Ropa de Hombre</a><a href="/Mujer">Ropa de Mujer </a></div>
           </template>
           <template v-else>
             <h2 class="tittle-login tipografia1">Ingresar</h2>
-            <form class="ingreso tipografia2" @submit.prevent="sendForm">
-              <input class="ingreso-item" required type="email" placeholder="Correo" v-model="correo">
-              <input class="ingreso-item" required type="password" placeholder="Contraseña" v-model="contraseña">
-              <p class="message tipografia2" v-if="MensajeLoading !== ''">{{MensajeLoading}}</p>
+            <form class="ingreso tipografia2" @submit.prevent="sendFormIngreso">
+              <input class="ingreso-item" @keyup="validateData" required type="email" placeholder="Correo" v-model="UsuarioIngreso.correo" pattern="^[a-z0-9_-]+(.[a-z0-9-_]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,15})$">
+              <input class="ingreso-item" @keyup="validateData" required type="password" placeholder="Contraseña" v-model="UsuarioIngreso.contraseña" pattern="^[0-9A-Za-zÑñÁáÉéÍíÓóÚúÜü@!#$%&amp;s]+$">
+              <p class="message tipografia2" v-if="MensajeLoading1 !== ''">{{MensajeLoading1}}</p>
               <p class="messageError tipografia1" v-if="MensajeIngreso !== ''">{{MensajeIngreso}}</p>
               <input class="bottom" type="submit" placeholder="Usuario">
             </form>
             <h2 class="tittle-login tipografia1">Registro</h2>
-            <form class="registro tipografia2" action="">
-              <input class="registro-item" type="text" placeholder="Nombres">
-              <input class="registro-item" type="text" placeholder="Apellidos">
-              <input class="registro-item" type="email" placeholder="Correo">
-              <input class="registro-item" type="password" placeholder="Contraseña">
-              <input class="registro-item" type="text" placeholder="Repetir Contraseña">
+            <form class="registro tipografia2" @submit.prevent="validacion(UsuarioRegistro.contrasena,UsuarioRegistro.repetirContrasena)">
+              <input class="registro-item" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜüs]+$" @keyup="validateData" type="text" placeholder="Nombres" v-model="UsuarioRegistro.nombres" required>
+              <input class="registro-item" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜüs]+$" @keyup="validateData" type="text" placeholder="Apellidos" v-model="UsuarioRegistro.apellidos" required>
+              <input class="registro-item" @keyup="validateData" type="email" placeholder="Correo" v-model="UsuarioRegistro.correo" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜüs]+$" required>
+              <input class="registro-item" @keyup="validateData" type="password" placeholder="Contraseña" v-model="UsuarioRegistro.contrasena" pattern="^[0-9A-Za-zÑñÁáÉéÍíÓóÚúÜü@!#$%&amp;s]+$" required>
+              <input class="registro-item" @keyup="validateData" type="text" placeholder="Repetir Contraseña" v-model="UsuarioRegistro.repetirContrasena" pattern="^[0-9A-Za-zÑñÁáÉéÍíÓóÚúÜü@!#$%&amp;s]+$" required>
+              <p class="message tipografia2" v-if="MensajeLoading2 !== ''">{{MensajeLoading2}}</p>
+              <p class="messageError tipografia1" v-if="MensajeRegistro !== ''">{{MensajeRegistro}}</p>
               <input class="bottom" type="submit">
             </form>
           </template>
