@@ -171,10 +171,37 @@ new Vue({
       }
 
       if (expression) {
-        input.className += " borderRojo";
-        console.log("incorrecto");
+        input.className = 'ingreso-item borderRojo';
       } else {
+        input.className = 'ingreso-item borderVerde';
+
         console.log("correcto");
+      }
+    },
+    validateDataRe: function validateDataRe(e) {
+
+      var input = e.target,
+          expression = void 0;
+
+      if (input.pattern) {
+        var regex = new RegExp(input.pattern);
+        expression = !regex.exec(input.value);
+      } else {
+        expression = !input.value;
+      }
+
+      if (expression || input.value.length < 3) {
+        input.className = 'registro-item borderRojo';
+      } else {
+        input.className = 'registro-item borderVerde';
+
+        console.log("correcto");
+      }
+
+      if (this.UsuarioRegistro.contrasena !== this.UsuarioRegistro.repetirContrasena && input.name === "repcontra" || this.UsuarioRegistro.contrasena !== this.UsuarioRegistro.repetirContrasena && input.name === "contra" && this.UsuarioRegistro.repetirContrasena !== '') {
+        this.MensajeRegistro = "Contraseñas no coinciden";
+      } else {
+        this.MensajeRegistro = "";
       }
     }
   }
