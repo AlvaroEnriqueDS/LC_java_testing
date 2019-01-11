@@ -31,7 +31,7 @@ public class ServletRegister extends HttpServlet {
         repetirContrasena =data.get("repetirContrasena").getAsString();
 
         //SOUT DE VERIFICACION DE PASE DE DATOS
-        System.out.println(correo+"- ServletRegister-"+contrasena);
+        System.out.println(correo+" -ServletRegister- "+contrasena);
 
         //SE INSTANCIA A LA CLASE Sql_Usuario
         //===================================
@@ -46,13 +46,13 @@ public class ServletRegister extends HttpServlet {
             //====================================================================================================
 
             int fk = obj.registrarCliente(correo, contrasena);
-            obj.registrarPersona(nombre, apellidos, fk);
-            bean = obj.registrarUsuario(nombres, apellidos, correo, contrasena);
 
-            if(bean != null) {
-                //RECUPERAMOS EL BEAN TRAIDO DEL METODO registrarUsuario
-                //====================================================
-                System.out.println(bean.getNombre()+"- ServletRegister_BEAN -"+bean.getApellido());
+            if(fk != -1) {
+                obj.registrarPersona(nombres, apellidos, fk);
+                bean = new BeanUsuario();
+                bean.setNombre(nombres);
+                bean.setApellido(apellidos);
+                bean.setCorreo(correo);
 
                 String json = null;
                 json = new Gson().toJson(bean);
@@ -61,8 +61,8 @@ public class ServletRegister extends HttpServlet {
                 response.getWriter().write(json);
             }else{
                 String json = null;
-                BeanUsuario bean2=new BeanUsuario();
-                json = new Gson().toJson(bean2);
+                String message = "Error correo ya existe";
+                json = new Gson().toJson(message);
                 response.setContentType("aplication/json");
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write(json);

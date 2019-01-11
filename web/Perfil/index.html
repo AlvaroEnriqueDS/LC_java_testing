@@ -48,10 +48,10 @@
             <div class="ingreso tipografia2"><a href="/Hombre">Ropa de Hombre</a><a href="/Mujer">Ropa de Mujer </a></div>
           </template>
           <template v-else>
-            <h2 class="tittle-login tipografia1">Ingresar</h2>
+            <h2 class="tittle-login tipografia1">Ingresar{{UsuarioIngreso.contrasena}}</h2>
             <form class="ingreso tipografia2" @submit.prevent="sendFormIngreso">
               <input class="ingreso-item" @keyup="validateData" required type="email" placeholder="Correo" v-model="UsuarioIngreso.correo" pattern="^[A-Za-z0-9]+(.[A-Za-z0-9-_]+)*@[A-Za-z0-9-]+(.[A-Za-z0-9-]+)*(.[A-Za-z]{2,15})$">
-              <input class="ingreso-item" required type="password" placeholder="Contraseña" v-model="UsuarioIngreso.contraseña" pattern="^[0-9A-Za-zÑñÁáÉéÍíÓóÚúÜü@!#$%&amp;s]+$">
+              <input class="ingreso-item" required type="password" placeholder="Contraseña" v-model="UsuarioIngreso.contrasena" pattern="^[0-9A-Za-zÑñÁáÉéÍíÓóÚúÜü@!#$%&amp;s]+$">
               <p class="message tipografia2" v-if="MensajeLoading1 !== ''">{{MensajeLoading1}}</p>
               <p class="messageError tipografia1" v-if="MensajeIngreso !== ''">{{MensajeIngreso}}</p>
               <input class="bottom" type="submit" placeholder="Usuario">
