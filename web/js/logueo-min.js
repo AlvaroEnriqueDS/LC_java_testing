@@ -36,13 +36,16 @@ new Vue({
   mounted: function mounted() {
     this.nombre = localStorage.nombre;
     this.correo = localStorage.correo;
-      this.apellido = localStorage.apellido;
     this.estadoSesion = localStorage.estadoSesion;
   },
 
   methods: {
     desloguearse: function desloguearse() {
-      this.activarShowMenu()
+      var toggle = matchMedia('(min-width: 814px)');
+      if (!toggle.matches) {
+        this.activarShowMenu();
+      }
+
       this.estadoSesion = 'off';
       localStorage.clear();
       alert("Cerró sesión");
@@ -85,21 +88,20 @@ new Vue({
       var _this = this;
 
       this.MensajeIngreso1 = '';
-      this.MensajeLoading = 'Cargando ...';
+      this.MensajeLoading1 = 'Cargando ...';
       axios.post('/Perfil/login', {
         correo: this.UsuarioIngreso.correo,
         contrasena: this.UsuarioIngreso.contrasena
       }).then(function (response) {
         console.log(response);
-        console.log("HOLA")
         console.log(response.data.nombre);
 
-
+        console.log(_this.nombre);
         //CODIGO SI EL INGRESO ES CORRECTO
         if (response.data.correo === _this.UsuarioIngreso.correo) {
           _this.nombre = response.data.nombre;
           _this.correo = response.data.correo;
-          _this.apellido= response.data.apellido;
+          _this.apellido = response.data.apellido;
           localStorage.nombre = response.data.nombre;
           localStorage.correo = response.data.correo;
           localStorage.apellido = response.data.apellido;
@@ -123,7 +125,7 @@ new Vue({
       var _this2 = this;
 
       this.MensajeRegistro = '';
-      this.MensajeLoading = 'Cargando ...';
+      this.MensajeLoading2 = 'Cargando ...';
       axios.post('/Perfil/register', {
         nombres: this.UsuarioRegistro.nombres,
         apellidos: this.UsuarioRegistro.apellidos,
@@ -132,13 +134,12 @@ new Vue({
         repetirContrasena: this.UsuarioRegistro.repetirContrasena
       }).then(function (response) {
         console.log(response);
-        console.log(response.data.correo);
-        console.log(_this2.UsuarioRegistro.correo);
+
         //CODIGO SI EL REGISTRO ES CORRECTO
         if (response.data.correo === _this2.UsuarioRegistro.correo) {
           _this2.nombre = response.data.nombre;
           _this2.correo = response.data.correo;
-          _this2.apellido= response.data.apellido;
+          _this2.apellido = response.data.apellido;
           localStorage.nombre = response.data.nombre;
           localStorage.correo = response.data.correo;
           localStorage.apellido = response.data.apellido;
@@ -146,11 +147,11 @@ new Vue({
           _this2.estadoSesion = "on";
           alert("Ingresó correctamente");
           _this2.MensajeRegistro = '';
-          _this2.MensajeLoading2 = '';
+          _this2.MensajeRegistro = response.data.message;
         } else {
           _this2.contraseña = '';
           _this2.MensajeLoading2 = '';
-          _this2.MensajeRegistro = response.data.message;
+          _this2.MensajeRegistro = "No se pudo registrar";
         }
       }).catch(function (error) {
         _this2.MensajeLoading2 = '';
