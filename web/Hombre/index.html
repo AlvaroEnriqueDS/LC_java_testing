@@ -9,7 +9,7 @@
     <meta property="og:title" content="Hombre">
     <meta property="og:description" content="Productos para hombre">
     <meta property="og:image" content="https://ed.team/sites/default/files/EDboilerplate-logo.png">
-    <link rel="stylesheet" href="/css/styles.css?t=1547097566021">
+    <link rel="stylesheet" href="/css/styles.css">
     <link rel="shortcut icon" href="/assets/img/logo.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Anton|Raleway" rel="stylesheet">
   </head>
@@ -38,89 +38,17 @@
       <div class="logoCentrado"> <img src="/assets/img/logoletra.png" alt=""></div>
       <div class="separador2"></div>
       <div class="fondo_productos"></div>
-      <article class="article_productos">
+      <article class="article_productos" id="productos">
         <div class="title_productos">
           <h2>Escoje el diseño que más te guste</h2>
         </div>
-        <div class="contenedor"> <div class="caja-producto">
+        <div class="contenedor"><div class="caja-producto" v-for="producto in productosList">
 <div class="caja-producto-item1">
-<img src="https://cdn8.bigcommerce.com/s-ybxns/images/stencil/1024x1024/products/125/3519/g7s3k440_7_RegalBlue__06381.1525703565.png?c=2" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
+<img v-bind:src="producto.imagen" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
 <div class="caja-producto-item2">
-<div class="caja-producto-item2_title"><a href="/Producto"><h3>Polera consadas</h3></a></div>
+<div class="caja-producto-item2_title"><a v-bind:href="producto.url"><h3>{{producto.name}}</h3></a></div>
 <div class="caja-producto-item2_precio">
-<p>S/199</p>
-</div>
-</div>
-</div><div class="caja-producto">
-<div class="caja-producto-item1">
-<img src="https://cdn8.bigcommerce.com/s-ybxns/images/stencil/1024x1024/products/125/3519/g7s3k440_7_RegalBlue__06381.1525703565.png?c=2" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
-<div class="caja-producto-item2">
-<div class="caja-producto-item2_title"><a href="/Producto"><h3>Polera consadas</h3></a></div>
-<div class="caja-producto-item2_precio">
-<p>S/199</p>
-</div>
-</div>
-</div><div class="caja-producto">
-<div class="caja-producto-item1">
-<img src="https://cdn8.bigcommerce.com/s-ybxns/images/stencil/1024x1024/products/125/3519/g7s3k440_7_RegalBlue__06381.1525703565.png?c=2" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
-<div class="caja-producto-item2">
-<div class="caja-producto-item2_title"><a href="/Producto"><h3>Polera consadas</h3></a></div>
-<div class="caja-producto-item2_precio">
-<p>S/199</p>
-</div>
-</div>
-</div><div class="caja-producto">
-<div class="caja-producto-item1">
-<img src="https://cdn8.bigcommerce.com/s-ybxns/images/stencil/1024x1024/products/125/3519/g7s3k440_7_RegalBlue__06381.1525703565.png?c=2" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
-<div class="caja-producto-item2">
-<div class="caja-producto-item2_title"><a href="/Producto"><h3>Polera consadas</h3></a></div>
-<div class="caja-producto-item2_precio">
-<p>S/199</p>
-</div>
-</div>
-</div><div class="caja-producto">
-<div class="caja-producto-item1">
-<img src="https://cdn8.bigcommerce.com/s-ybxns/images/stencil/1024x1024/products/125/3519/g7s3k440_7_RegalBlue__06381.1525703565.png?c=2" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
-<div class="caja-producto-item2">
-<div class="caja-producto-item2_title"><a href="/Producto"><h3>Polera consadas</h3></a></div>
-<div class="caja-producto-item2_precio">
-<p>S/199</p>
-</div>
-</div>
-</div><div class="caja-producto">
-<div class="caja-producto-item1">
-<img src="https://cdn8.bigcommerce.com/s-ybxns/images/stencil/1024x1024/products/125/3519/g7s3k440_7_RegalBlue__06381.1525703565.png?c=2" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
-<div class="caja-producto-item2">
-<div class="caja-producto-item2_title"><a href="/Producto"><h3>Polera consadas</h3></a></div>
-<div class="caja-producto-item2_precio">
-<p>S/199</p>
-</div>
-</div>
-</div><div class="caja-producto">
-<div class="caja-producto-item1">
-<img src="https://cdn8.bigcommerce.com/s-ybxns/images/stencil/1024x1024/products/125/3519/g7s3k440_7_RegalBlue__06381.1525703565.png?c=2" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
-<div class="caja-producto-item2">
-<div class="caja-producto-item2_title"><a href="/Producto"><h3>Polera consadas</h3></a></div>
-<div class="caja-producto-item2_precio">
-<p>S/199</p>
-</div>
-</div>
-</div><div class="caja-producto">
-<div class="caja-producto-item1">
-<img src="https://cdn8.bigcommerce.com/s-ybxns/images/stencil/1024x1024/products/125/3519/g7s3k440_7_RegalBlue__06381.1525703565.png?c=2" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
-<div class="caja-producto-item2">
-<div class="caja-producto-item2_title"><a href="/Producto"><h3>Polera consadas</h3></a></div>
-<div class="caja-producto-item2_precio">
-<p>S/199</p>
-</div>
-</div>
-</div><div class="caja-producto">
-<div class="caja-producto-item1">
-<img src="https://cdn8.bigcommerce.com/s-ybxns/images/stencil/1024x1024/products/125/3519/g7s3k440_7_RegalBlue__06381.1525703565.png?c=2" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
-<div class="caja-producto-item2">
-<div class="caja-producto-item2_title"><a href="/Producto"><h3>Polera consadas</h3></a></div>
-<div class="caja-producto-item2_precio">
-<p>S/199</p>
+<p>S/{{producto.Precio}}</p>
 </div>
 </div>
 </div>
@@ -147,6 +75,7 @@
       </footer>
     </div><script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js/scripts-min.js?t=1547097566021"></script>
+    <script src="/js/productos-min.js"></script>
+    <script src="/js/scripts-min.js"></script>
   </body>
 </html>
