@@ -126,7 +126,7 @@ new Vue({
 
       this.MensajeRegistro = '';
       this.MensajeLoading2 = 'Cargando ...';
-      axios.post('/Perfil/register', {
+      axios.post('/Perfil/register?tipo=h', {
         nombres: this.UsuarioRegistro.nombres,
         apellidos: this.UsuarioRegistro.apellidos,
         correo: this.UsuarioRegistro.correo,
