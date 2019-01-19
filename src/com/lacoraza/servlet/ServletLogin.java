@@ -68,8 +68,8 @@ public class ServletLogin extends javax.servlet.http.HttpServlet {
 
             }else{
                 String json = null;
-                BeanUsuario bean2=new BeanUsuario();
-                json = new Gson().toJson(bean2);
+                String mensaje = "hubo un error";
+                json = new Gson().toJson(mensaje);
                 response.setContentType("aplication/json");
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write(json);

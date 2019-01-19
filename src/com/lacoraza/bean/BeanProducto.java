@@ -15,6 +15,8 @@ public class BeanProducto {
     Categoria categoria;
     Genero genero;
     Talla talla;
+    Imagenes imagenes;
+
 
 
     public int getIdProducto() {
@@ -63,5 +65,13 @@ public class BeanProducto {
 
     public void setTalla(Talla talla) {
         this.talla = talla;
+    }
+
+    public Imagenes getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(Imagenes imagenes) {
+        this.imagenes = imagenes;
     }
 }
