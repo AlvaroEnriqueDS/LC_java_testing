@@ -37,7 +37,7 @@ new Vue({
       axios.get(this.URLservlet).then(function (response) {
         switch (response.status) {
           case _this.codigosDeEstado.STATUS_OK:
-
+            console.log(response.data)
             _this.productosList = response.data;
             localStorage.productosList = JSON.stringify(response.data);
             break;

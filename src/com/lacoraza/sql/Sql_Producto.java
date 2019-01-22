@@ -33,8 +33,8 @@ public class Sql_Producto {
         sql ="select a.idproducto, a.nom_producto, a.descripcion_produ, b.descripcion, c.genero, d.talla, e.ruta  from producto a \n" +
                 "inner join categoria b on a.categoria_idcategoria = b.idcategoria \n" +
                 "inner join genero c on a.genero_idgenero = c.idgenero \n" +
-                "inner join talla d on a.talla_idtalla = d.idtalla\n" +
-                "inner join imagenes e on a.idproducto = e.producto_idproducto;";
+                "inner join talla d on a.talla_idtalla = d.idtalla \n" +
+                "inner join imagenes e on a.idproducto = e.producto_idproducto";
 
         ArrayList<BeanProducto> listaproducto = new ArrayList();
 
@@ -42,10 +42,12 @@ public class Sql_Producto {
             con  = conectar.conectar();
             stm = con.prepareStatement(sql);
             rs = stm.executeQuery(); //REVISAR EL CODIGO
+            System.out.println(rs);
 
             while (rs.next()) {
                 obj =new BeanProducto();
                 obj_cat = new Categoria();
+                obj_gen = new Genero();
                 obj_tal = new Talla();
                 obj_imag =new Imagenes();
 
@@ -57,9 +59,16 @@ public class Sql_Producto {
                 obj_tal.setTalla(rs.getString(6));
                 obj_imag.setRuta(rs.getString(7));
 
+                System.out.println(rs.getInt(1));
+                System.out.println(rs.getString(2));
+                System.out.println(rs.getString(3));
+                System.out.println(rs.getString(4));
+                System.out.println(rs.getString(5));
+                System.out.println(rs.getString(6));
+                System.out.println(rs.getString(7));
+
                 obj.setCategoria(obj_cat);
                 obj.setGenero(obj_gen);
-                obj.setTalla(obj_tal);
                 obj.setTalla(obj_tal);
                 obj.setImagenes(obj_imag);
 

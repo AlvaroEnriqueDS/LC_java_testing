@@ -29,18 +29,23 @@ public class ServletProducto extends HttpServlet {
 
         ArrayList<BeanProducto> listaproducto;
 
+
         try {
 
             listaproducto = obj.obtenerProductos();
+            System.out.println("El ARRAY en servletProducto intermedio");
+            System.out.println(listaproducto);
 
-            if(listaproducto != null) {
-
+            //FALTA QUE SE EVALUE EL ARRAY
+            if(listaproducto.size() != 0) {
+                System.out.println("SIII se lleno el ARRAY en servletProducto");
                 String json = null;
                 json = new Gson().toJson(listaproducto);
                 response.setContentType("aplication/json");
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write(json);
             }else{
+                System.out.println("NOOO se lleno el ARRAY en servletProducto");
                 String json = null;
                 String message = "Error en servlet producto";
                 json = new Gson().toJson(message);
