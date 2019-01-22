@@ -33,4 +33,18 @@
         <url-pattern>/Perfil/register</url-pattern>
     </servlet-mapping>
 
+    <!-- servlet PRODUCTO -->
+    <servlet>
+        <description></description>
+        <display-name>ServletProducto</display-name>
+        <servlet-name>ServletProducto</servlet-name>
+        <servlet-class>com.lacoraza.servlet.ServletProducto</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>ServletProducto</servlet-name>
+        <url-pattern>/productos</url-pattern>
+    </servlet-mapping>
+
 </web-app>

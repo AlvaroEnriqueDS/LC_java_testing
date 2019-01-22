@@ -11,7 +11,8 @@ package com.lacoraza.bean;
  */
 public class BeanProducto {
     int idProducto;
-    String nomProdu, descripcionProdu;
+    String nomProdu;
+    String descripcionProdu;
     Categoria categoria;
     Genero genero;
     Talla talla;
