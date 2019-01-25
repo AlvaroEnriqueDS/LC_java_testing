@@ -541,8 +541,12 @@ th {
           box-shadow: 1px 1px 2px #46798E, -1px -1px 2px #46798E;
 }
 
-.perfil_producto-item1-visor-imgitem:hover img, .perfil_producto-item1-visor-imgitem .activeselect img {
-  opacity: 0.4;
+.perfil_producto-item1-visor-imgitem:hover img {
+  opacity: 0.7;
+}
+
+.perfil_producto-item1-visor-imgitem.activeselect img {
+  opacity: 0.35;
 }
 
 @media screen and (min-width: 540px) {
@@ -1728,6 +1732,7 @@ th {
   border: 1px solid #A0C9C5;
   background-color: #A0C9C5;
   color: #3C4043;
+  opacity: 0.6;
   cursor: pointer;
 }
 
@@ -1761,6 +1766,7 @@ th {
   border: 1px solid #23af5b;
   background-color: #23af5b;
   color: #3C4043;
+  opacity: 0.6;
   cursor: pointer;
 }
 
@@ -1803,6 +1809,7 @@ th {
   border: 1px solid white;
   background-color: white;
   color: #3C4043;
+  opacity: 0.6;
   cursor: pointer;
 }
 

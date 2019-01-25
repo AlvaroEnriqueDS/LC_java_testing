@@ -36,48 +36,30 @@
     <div class="layout"> 
       <div class="fondo-producto"></div>
       <div class="logoCentrado"><img src="/assets/img/logoletra.png" alt="La coraza"></div>
-      <main class="perfil_producto">
+      <main class="perfil_producto" id="product">
         <div class="perfil_producto-item1">
-          <h1>Nombre del product</h1><img src="/assets/img/polo-3.jpg" alt="polo">
+          <h1>{{producto.name}}</h1><img v-bind:src="imagenProductoSeleccionado.ruta" alt="polo">
           <div class="perfil_producto-item1-visor">
-            <div class="perfil_producto-item1-visor-imgitem"><img src="/assets/img/polo-3.jpg" alt=""></div>
-            <div class="perfil_producto-item1-visor-imgitem"><img src="/assets/img/polo-3.jpg" alt=""></div>
-            <div class="perfil_producto-item1-visor-imgitem"><img src="/assets/img/polo-3.jpg" alt=""></div>
-            <div class="perfil_producto-item1-visor-imgitem"><img src="/assets/img/polo-3.jpg" alt=""></div>
+            <div class="perfil_producto-item1-visor-imgitem" v-for="imagen,index in producto.imagenes" @click="selectImagen(index)" v-bind:class="{activeselect: producto.imagenes[index].select}"><img v-bind:src="imagen.ruta" alt="polo"></div>
           </div>
         </div>
-        <div class="perfil_producto-item3"><img src="/assets/img/Caja.JPG" alt="caja"></div>
+        <div class="perfil_producto-item3"><img v-bind:src="cajaSeleccionada.img" alt="caja"></div>
         <div class="perfil_producto-item2">
           <h2>Disponibilidad:</h2>
-          <p>5 unidades</p>
-          <p class="descripcion">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia adipisci facere</p>
+          <p>{{producto.disponibilidad}} unidades</p>
+          <p class="descripcion">{{producto.descripcion}}</p>
           <div class="perfil_producto-item2-cajas">
-            <div class="boton-opcion">
-              <p>C1</p>
-            </div>
-            <div class="boton-opcion">
-              <p>C2</p>
-            </div>
-            <div class="boton-opcion">
-              <p>C3</p>
-            </div>
-            <div class="boton-opcion">
-              <p>C4</p>
+            <div class="boton-opcion" v-for="caja, index in cajas" @click="selectCaja(index)" v-bind:class="{active: cajas[index].select}">
+              <p>C{{index+1}}</p>
             </div>
           </div>
           <div class="perfil_producto-item2-tallas">
-            <div class="boton-opcion-2">
-              <p>S</p>
-            </div>
-            <div class="boton-opcion-2">
-              <p>M</p>
-            </div>
-            <div class="boton-opcion-2">
-              <p>L</p>
+            <div class="boton-opcion-2" v-for="talla,index in tallas" @click="selectTalla(index)" v-bind:title="talla.name" v-bind:class="{active:talla.select}">
+              <p>{{talla.cod}}</p>
             </div>
           </div>
-          <div class="perfil_producto-item2-cantidad"><input type="number" name="cantidad" min="1" placeholder="Cantidad">
-            <p>S/. 20.00</p>
+          <div class="perfil_producto-item2-cantidad"><input type="number" name="cantidad" min="1" placeholder="Cantidad" v-model="cantidad">
+            <p>S/. {{precioTotal}}</p>
           </div>
           <div class="bottom">
             <p>Comprar</p>
@@ -142,7 +124,7 @@
       </footer>
     </div><script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="/js/productos-min.js"></script>
+    <script src="/js/product-min.js"></script>
     <script src="/js/scripts-min.js"></script>
   </body>
 </html>
