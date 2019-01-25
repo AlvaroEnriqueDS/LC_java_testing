@@ -23,10 +23,10 @@ public class PsqlConexion {
 
     public Connection conectar(){
         Connection conexion = null;
-        String url = "jdbc:postgresql://zadness.com:5432/lacorazadb";
+        String url = "jdbc:postgresql://www.lacoraza.com:5432/lacoraza";
         Properties propiedades  = new Properties();
-        propiedades.setProperty("user", "lacoraza");
-        propiedades.setProperty("password", "123");
+        propiedades.setProperty("user", "lcadmin");
+        propiedades.setProperty("password", "vueyjava");
         
         try {
             Class.forName("org.postgresql.Driver");
