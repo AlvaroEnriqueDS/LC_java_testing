@@ -2,7 +2,7 @@ package com.lacoraza.bean;
 
 public class Categoria {
     int idCategoria;
-    String descripcion;
+    String categoria;
 
 
     public int getIdCategoria() {
@@ -13,11 +13,11 @@ public class Categoria {
         this.idCategoria = idCategoria;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

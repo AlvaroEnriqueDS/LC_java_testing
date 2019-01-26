@@ -16,6 +16,7 @@ public class BeanProducto {
     Categoria categoria;
     Genero genero;
     Talla talla;
+    ProductoHasTalla stock;
     Imagenes imagenes;
 
 
@@ -66,6 +67,14 @@ public class BeanProducto {
 
     public void setTalla(Talla talla) {
         this.talla = talla;
+    }
+
+    public ProductoHasTalla getStock() {
+        return stock;
+    }
+
+    public void setStock(ProductoHasTalla stock) {
+        this.stock = stock;
     }
 
     public Imagenes getImagenes() {

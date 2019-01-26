@@ -10,8 +10,8 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+import com.lacoraza.bean.BeanCliente;
 import com.lacoraza.sql.Sql_Usuario;
-import com.lacoraza.bean.BeanUsuario;
 
 @WebServlet(name = "ServletRegister")
 public class ServletRegister extends HttpServlet {
@@ -38,22 +38,21 @@ public class ServletRegister extends HttpServlet {
         Sql_Usuario obj=new Sql_Usuario();
         //SE LLAMA A LA CLASE BeanUsuario
         //===================================
-        BeanUsuario bean;
+        BeanCliente bean;
 
         try {
             //INSERTAMOS EL NEUVO USUARIO INVOCANDO AL METODO REUsuario
             //EL CUAL DEBE DE DEVOLVER UN BEAN
             //====================================================================================================
 
-            int fk = obj.registrarCliente(correo, contrasena);
+            obj.registrarCliente(correo, contrasena, nombres, apellidos);
 
-            if(fk != -1) {
-                obj.registrarPersona(nombres, apellidos, fk);
-                bean = new BeanUsuario();
-                bean.setNombre(nombres);
-                bean.setApellido(apellidos);
-                bean.setCorreo(correo);
+            bean = new BeanCliente();
+            bean.setNombre(nombres);
+            bean.setApellido(apellidos);
+            bean.setCorreo(correo);
 
+            if(bean != null) {
                 String json = null;
                 json = new Gson().toJson(bean);
                 response.setContentType("aplication/json");

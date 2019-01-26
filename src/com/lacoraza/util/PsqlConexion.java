@@ -58,7 +58,7 @@ public class PsqlConexion {
         PsqlConexion cn = new PsqlConexion();
         cn.conectar();
         Sql_Usuario cx = new Sql_Usuario();
-        cx.obtenerUsuario("pool@lc.com", "1234");
+        cx.obtenerUsuario("alvaro@lc.com", "1234");
 
     }
 
