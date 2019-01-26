@@ -6,7 +6,7 @@
     <meta name="viewport" content="initial-scale=1.0, width=device-width">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@edteamlat">
-    <meta property="og:title" content="Home">
+    <meta property="og:title" content="Carrito">
     <meta property="og:description" content="Pagina inicial de EDboilerplate">
     <meta property="og:image" content="https://ed.team/sites/default/files/EDboilerplate-logo.png">
     <link rel="stylesheet" href="/css/styles.css">
@@ -37,132 +37,41 @@
       <main class="inicio-main"></main>
       <div class="fondo-carrito"></div>
       <div class="logoCentrado"><img src="/assets/img/logoletra.png" alt="La coraza"></div>
-      <main class="carrito">
+      <main class="carrito" id="carrito">
         <div class="carrito-tittle">
-          <h1>Tu Carrito</h1>
+          <h1>Tu Carrito    </h1>
         </div>
         <div class="carrito-listProducto">
-          <div class="carrito-producto">
-            <div class="carrito-producto-item1"><img src="/assets/img/polo-3.jpg" alt="polo">
-              <h2>Name del producto</h2>
+          <template v-if="productos.length === 0"><img class="imagenCarrito" src="/assets/img/Carrito.png" alt="carrito vacío">
+            <p class="parrafo tipografia2">Su carrito está vacío</p>
+          </template>
+          <div class="carrito-producto" v-for="producto,index in productos">
+            <div class="carrito-producto-item1"><img :src="producto.imagenes[0].ruta" alt="producto.name">
+              <h2>{{producto.name}}</h2>
               <div class="boton-opcion-2">
-                <p>S</p>
+                <p>{{producto.talla}}</p>
               </div>
             </div>
-            <div class="carrito-producto-item2"><img src="/assets/img/Caja.JPG" alt="caja"><input type="number" name="cantidad" min="1" placeholder="Cantidad">
+            <div class="carrito-producto-item2"><img :src="producto.caja" alt="caja"><input v-model="producto.cantidad" type="number" name="cantidad" min="1" placeholder="producto.cantidad">
               <div class="precio">
-                <p><del>S/. 15.00</del></p>
-                <p>S/. 20.00</p>
+                <p><del>S/. {{producto.precio*producto.cantidad}}.00</del></p>
+                <p>S/. {{producto.precio*producto.cantidad*(1-producto.oferta)}}.00</p>
               </div>
             </div>
             <div class="carrito-producto-item3">
-              <div class="boton-opcion-3">
-                <p>X</p>
-              </div>
-            </div>
-          </div>
-          <div class="carrito-producto">
-            <div class="carrito-producto-item1"><img src="/assets/img/polo-3.jpg" alt="polo">
-              <h2>Name del producto</h2>
-              <div class="boton-opcion-2">
-                <p>S</p>
-              </div>
-            </div>
-            <div class="carrito-producto-item2"><img src="/assets/img/Caja.JPG" alt="caja"><input type="number" name="cantidad" min="1" placeholder="Cantidad">
-              <div class="precio">
-                <p><del>S/. 15.00</del></p>
-                <p>S/. 20.00</p>
-              </div>
-            </div>
-            <div class="carrito-producto-item3">
-              <div class="boton-opcion-3">
-                <p>X</p>
-              </div>
-            </div>
-          </div>
-          <div class="carrito-producto">
-            <div class="carrito-producto-item1"><img src="/assets/img/polo-3.jpg" alt="polo">
-              <h2>Name del producto</h2>
-              <div class="boton-opcion-2">
-                <p>S</p>
-              </div>
-            </div>
-            <div class="carrito-producto-item2"><img src="/assets/img/Caja.JPG" alt="caja"><input type="number" name="cantidad" min="1" placeholder="Cantidad">
-              <div class="precio">
-                <p><del>S/. 15.00</del></p>
-                <p>S/. 20.00</p>
-              </div>
-            </div>
-            <div class="carrito-producto-item3">
-              <div class="boton-opcion-3">
-                <p>X</p>
-              </div>
-            </div>
-          </div>
-          <div class="carrito-producto">
-            <div class="carrito-producto-item1"><img src="/assets/img/polo-3.jpg" alt="polo">
-              <h2>Name del producto</h2>
-              <div class="boton-opcion-2">
-                <p>S</p>
-              </div>
-            </div>
-            <div class="carrito-producto-item2"><img src="/assets/img/Caja.JPG" alt="caja"><input type="number" name="cantidad" min="1" placeholder="Cantidad">
-              <div class="precio">
-                <p><del>S/. 15.00</del></p>
-                <p>S/. 20.00</p>
-              </div>
-            </div>
-            <div class="carrito-producto-item3">
-              <div class="boton-opcion-3">
-                <p>X</p>
-              </div>
-            </div>
-          </div>
-          <div class="carrito-producto">
-            <div class="carrito-producto-item1"><img src="/assets/img/polo-3.jpg" alt="polo">
-              <h2>Name del producto</h2>
-              <div class="boton-opcion-2">
-                <p>S</p>
-              </div>
-            </div>
-            <div class="carrito-producto-item2"><img src="/assets/img/Caja.JPG" alt="caja"><input type="number" name="cantidad" min="1" placeholder="Cantidad">
-              <div class="precio">
-                <p><del>S/. 15.00</del></p>
-                <p>S/. 20.00</p>
-              </div>
-            </div>
-            <div class="carrito-producto-item3">
-              <div class="boton-opcion-3">
-                <p>X</p>
-              </div>
-            </div>
-          </div>
-          <div class="carrito-producto">
-            <div class="carrito-producto-item1"><img src="/assets/img/polo-3.jpg" alt="polo">
-              <h2>Name del producto</h2>
-              <div class="boton-opcion-2">
-                <p>S</p>
-              </div>
-            </div>
-            <div class="carrito-producto-item2"><img src="/assets/img/Caja.JPG" alt="caja"><input type="number" name="cantidad" min="1" placeholder="Cantidad">
-              <div class="precio">
-                <p><del>S/. 15.00</del></p>
-                <p>S/. 20.00</p>
-              </div>
-            </div>
-            <div class="carrito-producto-item3">
-              <div class="boton-opcion-3">
+              <div class="boton-opcion-3" @click="eliminarProducto(index)">
                 <p>X</p>
               </div>
             </div>
           </div>
         </div>
         <div class="carrito-precio">
-          <p>Precio Final: S/.<span>2000</span></p>
+          <p>Precio Final: S/.<span>{{precioFinal}}</span></p>
         </div>
         <div class="carrito-bottom">
-          <div class="bottom">
-            <p>Comprar</p>
+          <div class="bottom" @click="comprar()">
+            <p v-if="productos.length !== 0">Comprar</p>
+            <p v-else="productos.length !== 0"><del>Comprar</del></p>
           </div>
         </div>
       </main>
@@ -221,6 +130,7 @@
       </footer>
     </div><script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/carrito-min.js"></script>
     <script src="/js/scripts-min.js"></script>
   </body>
 </html>

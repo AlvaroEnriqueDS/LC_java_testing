@@ -97,6 +97,9 @@ var activeMenu = exports.activeMenu = function activeMenu() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 // Este es un ejemplo de como exportar funciones desde un archivo
 // En index.js se importan estas funciones
 
@@ -107,6 +110,17 @@ var saludo = exports.saludo = function saludo() {
 var despedida = exports.despedida = function despedida() {
   console.log('Adiós mundo');
 };
+
+var Producto = exports.Producto = function Producto(name, descripcion, precio) {
+  _classCallCheck(this, Producto);
+
+  this.name = name;
+  this.descripcion = descripcion;
+  this.precio = precio;
+};
+
+var producto = new Producto("perro", "asdadasd", 333);
+var producto2 = new Producto();
 
 },{}]},{},[1]);
 

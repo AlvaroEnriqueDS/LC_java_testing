@@ -913,17 +913,18 @@ th {
 
 .carrito-tittle h1 {
   color: #3C4043;
-  margin: 0;
+  margin: 0 0 0;
 }
 
 @media screen and (min-width: 1010px) {
   .carrito-tittle h1 {
-    margin: 1rem 0 0;
+    margin: 5rem 0 0;
   }
 }
 
 .carrito-listProducto {
   grid-column: 2 / 10;
+  margin: 2rem 0 0;
   display: grid;
   grid-template-columns: 1fr;
 }
@@ -1098,6 +1099,22 @@ th {
     grid-column: 1 / 13;
     grid-row: 2/ 12;
   }
+}
+
+.imagenCarrito {
+  -ms-flex-item-align: end;
+      align-self: end;
+  justify-self: center;
+  height: 15rem;
+  color: #3C4043;
+}
+
+.parrafo {
+  -ms-flex-item-align: top;
+      align-self: top;
+  justify-self: center;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 .banner {
@@ -1687,6 +1704,8 @@ th {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
 }
 
 .bottom:hover {

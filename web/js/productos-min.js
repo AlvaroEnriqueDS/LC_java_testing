@@ -13,18 +13,17 @@ var productos = new Vue({
 
   },
   mounted: function mounted() {
-    console.log(localStorage.productosList !== undefined);
+    console.log(sessionStorage.productosList !== undefined);
     try {
-      if (localStorage.productosList !== undefined) {
-        this.productosList = JSON.parse(localStorage.productosList);
+      if (sessionStorage.productosList !== undefined) {
+        this.productosList = JSON.parse(sessionStorage.productosList);
       }
     } catch (error) {
       this.productosList = this.productosListRespaldo;
     }
   },
   created: function created() {
-    if (localStorage.productosList === undefined) {
-      console.log(localStorage.productosList !== undefined);
+    if (sessionStorage.productosList === undefined) {
       this.loadProductos();
     }
   },
@@ -37,9 +36,9 @@ var productos = new Vue({
       axios.get(this.URLservlet).then(function (response) {
         switch (response.status) {
           case _this.codigosDeEstado.STATUS_OK:
-            console.log(response.data)
+            console.log(response.data);
             _this.productosList = response.data;
-            localStorage.productosList = JSON.stringify(response.data);
+            sessionStorage.productosList = JSON.stringify(response.data);
             break;
           default:
             _this.productosList = _this.productosListRespaldo;
