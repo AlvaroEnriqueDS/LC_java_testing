@@ -1,6 +1,6 @@
 package com.lacoraza.bean;
 
-public class BeanTelefono extends BeanCliente {
+public class Telefono extends BeanCliente {
     //DECLARAMOS LAS VARIABLES
     //========================
     String numero, descripcion;

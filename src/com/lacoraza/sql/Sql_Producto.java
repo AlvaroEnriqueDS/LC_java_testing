@@ -24,17 +24,19 @@ public class Sql_Producto {
         Categoria obj_cat = null;
         Genero obj_gen  = null;
         Talla obj_tal = null;
+        ProductoHasTalla obj_pht = null;
         Imagenes obj_imag = null;
 
 
         //HACEMOS LA SENTENCIA PARA VERIFICAR EN LA TABLA ACCESO
         //===========================================================
         String sql;
-        sql ="select a.idproducto, a.nom_producto, a.descripcion_produ, b.descripcion, c.genero, d.talla, e.ruta  from producto a \n" +
-                "inner join categoria b on a.categoria_idcategoria = b.idcategoria \n" +
-                "inner join genero c on a.genero_idgenero = c.idgenero \n" +
-                "inner join talla d on a.talla_idtalla = d.idtalla \n" +
-                "inner join imagenes e on a.idproducto = e.producto_idproducto";
+        sql ="select a.idproducto, a.nom_producto, a.descripcion_produ, b.genero, c.categoria, e.talla, d.stock, f.ruta  from producto a \n" +
+                "inner join genero b on a.genero_idgenero = b.idgenero \n" +
+                "inner join categoria c on a.categoria_idcategoria = c.idcategoria \n" +
+                "inner join producto_has_talla d on a.idproducto = d.producto_idproducto \n" +
+                "inner join talla e on d.talla_idtalla = e.idtalla \n" +
+                "inner join imagenes f on a.idproducto = f.producto_idproducto;";
 
         ArrayList<BeanProducto> listaproducto = new ArrayList();
 
@@ -49,15 +51,17 @@ public class Sql_Producto {
                 obj_cat = new Categoria();
                 obj_gen = new Genero();
                 obj_tal = new Talla();
+                obj_pht = new ProductoHasTalla();
                 obj_imag =new Imagenes();
 
                 obj.setIdProducto(rs.getInt(1));
                 obj.setNomProdu(rs.getString(2));
                 obj.setDescripcionProdu(rs.getString(3));
-                obj_cat.setDescripcion(rs.getString(4));
-                obj_gen.setGenero(rs.getString(5));
+                obj_gen.setGenero(rs.getString(4));
+                obj_cat.setCategoria(rs.getString(5));
                 obj_tal.setTalla(rs.getString(6));
-                obj_imag.setRuta(rs.getString(7));
+                obj_pht.setStock(rs.getInt(7));
+                obj_imag.setRuta(rs.getString(8));
 
                 System.out.println(rs.getInt(1));
                 System.out.println(rs.getString(2));
@@ -65,11 +69,13 @@ public class Sql_Producto {
                 System.out.println(rs.getString(4));
                 System.out.println(rs.getString(5));
                 System.out.println(rs.getString(6));
-                System.out.println(rs.getString(7));
+                System.out.println(rs.getInt(7));
+                System.out.println(rs.getString(8));
 
                 obj.setCategoria(obj_cat);
                 obj.setGenero(obj_gen);
                 obj.setTalla(obj_tal);
+                obj.setStock(obj_pht);
                 obj.setImagenes(obj_imag);
 
                 listaproducto.add(obj);

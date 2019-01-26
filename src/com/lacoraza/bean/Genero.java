@@ -3,6 +3,7 @@ package com.lacoraza.bean;
 public class Genero {
     int idGenero;
     String genero;
+    char simbolo;
 
 
     public int getIdGenero() {
@@ -19,5 +20,13 @@ public class Genero {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public char getSimbolo() {
+        return simbolo;
+    }
+
+    public void setSimbolo(char simbolo) {
+        this.simbolo = simbolo;
     }
 }

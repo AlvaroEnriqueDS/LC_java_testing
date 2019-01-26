@@ -3,20 +3,9 @@ package com.lacoraza.servlet;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import java.sql.PreparedStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+import com.lacoraza.bean.BeanCliente;
 import com.lacoraza.sql.Sql_Usuario;
-import com.lacoraza.bean.BeanUsuario;
 
 
 public class ServletLogin extends javax.servlet.http.HttpServlet {
@@ -38,10 +27,10 @@ public class ServletLogin extends javax.servlet.http.HttpServlet {
         Sql_Usuario obj=new Sql_Usuario();
         //SE LLAMA A LA CLASE BeanUsuario
         //===================================
-        BeanUsuario bean;
+        BeanCliente bean;
         //SE CREA LA SESSION
         //==================
-        HttpSession misession = request.getSession(true);
+        //HttpSession misession = request.getSession(true);
 
 
 
@@ -57,9 +46,9 @@ public class ServletLogin extends javax.servlet.http.HttpServlet {
                 //CREAMOS UN ATRIBUTO DE SESSION "nombres" Y LE DAMOS
                 //LOS DATOS DEL NOMBRE, APELLIDO PATERNO Y MATERNO CONCATENADOS
                 //=================================================================================================================
-                misession.setAttribute("nombres", bean.getNombre()); //+" "+bean.getApePat()+" "+bean.getApeMat());
-                misession.setAttribute("apellido", bean.getApellido());
-                misession.setAttribute("correo", bean.getCorreo());
+                //misession.setAttribute("nombres", bean.getNombre()); //+" "+bean.getApePat()+" "+bean.getApeMat());
+                //misession.setAttribute("apellido", bean.getApellido());
+                //misession.setAttribute("correo", bean.getCorreo());
                 String json = null;
                 json = new Gson().toJson(bean);
                 response.setContentType("aplication/json");
