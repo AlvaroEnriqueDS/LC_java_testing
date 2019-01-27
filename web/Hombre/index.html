@@ -44,11 +44,11 @@
         </div>
         <div class="contenedor"><div class="caja-producto" v-for="producto in productosList">
 <div class="caja-producto-item1">
-<img v-bind:src="producto.imagenes.ruta" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
+<img v-bind:src="producto.imagenes[0].ruta" alt=""><a href="/Carrito"><i class="fas fa-shopping-cart fa-2x"></i></a></div>
 <div class="caja-producto-item2">
 <div class="caja-producto-item2_title"><a v-bind:href="producto.url"><h3>{{producto.nomProdu}}</h3></a></div>
 <div class="caja-producto-item2_precio">
-<p>S/{{producto.Precio}}</p>
+<p>S/{{producto.precio}}</p>
 </div>
 </div>
 </div>

@@ -19,7 +19,7 @@ var product = new Vue({
       ruta: ''
     },
 
-    cajas: [{ id: 0, img: "/assets/img/Caja.JPG", select: true }, { id: 1, img: "/assets/img/Caja2.jpg", select: false }, { id: 2, img: "/assets/img/Caja.JPG", select: false }, { id: 3, img: "/assets/img/Caja2.jpg", select: false }],
+    cajas: [{ id: 0, img: "/assets/img/Caja.jpg", select: true }, { id: 1, img: "/assets/img/Caja2.jpg", select: false }, { id: 2, img: "/assets/img/Caja.jpg", select: false }, { id: 3, img: "/assets/img/Caja2.jpg", select: false }],
     cajaSeleccionada: {
       id: 0,
       img: "/assets/img/Caja.jpg"

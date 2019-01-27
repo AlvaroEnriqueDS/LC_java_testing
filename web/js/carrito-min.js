@@ -8,7 +8,7 @@ var producto = {
   cantidad: 3,
   talla: "M",
   precio: 100,
-  caja: "/assets/img/Caja.JPG",
+  caja: "/assets/img/Caja.jpg",
   oferta: 0.25
 },
     producto2 = {
@@ -17,7 +17,7 @@ var producto = {
   cantidad: 5,
   talla: "M",
   precio: 200,
-  caja: "/assets/img/Caja.JPG",
+  caja: "/assets/img/Caja.jpg",
   oferta: 0.25
 },
     producto3 = {
@@ -26,7 +26,7 @@ var producto = {
   cantidad: 3,
   talla: "M",
   precio: 100,
-  caja: "/assets/img/Caja.JPG",
+  caja: "/assets/img/Caja.jpg",
   oferta: 0.25
 };
 var vueCarrito = new Vue({
