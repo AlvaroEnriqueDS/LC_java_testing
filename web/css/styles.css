@@ -1687,7 +1687,6 @@ th {
 
 .bottom {
   margin: 1rem 0;
-  color: whitesmoke;
   font-family: raleway;
   font-weight: bold;
   font-size: 14px;
@@ -1704,8 +1703,13 @@ th {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: all .3s ease-out;
-  transition: all .3s ease-out;
+  -webkit-transition: all .4s ease-out;
+  transition: all .4s ease-out;
+  color: whitesmoke;
+}
+
+.bottom a {
+  color: whitesmoke;
 }
 
 .bottom:hover {
@@ -1713,6 +1717,10 @@ th {
   background-color: whitesmoke;
   color: #46798E;
   cursor: pointer;
+}
+
+.bottom:hover a {
+  color: #46798E;
 }
 
 .bottom.fantasma {
@@ -1728,6 +1736,8 @@ th {
 }
 
 .boton-opcion {
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
   color: #3C4043;
   font-family: "Anton";
   font-size: 18px;
@@ -1762,6 +1772,8 @@ th {
 }
 
 .boton-opcion-2 {
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
   color: #3C4043;
   font-family: "Anton";
   font-size: 18px;
@@ -1796,6 +1808,8 @@ th {
 }
 
 .boton-opcion-3 {
+  -webkit-transition: all .3s ease-out;
+  transition: all .3s ease-out;
   color: #3C4043;
   font-family: "Anton";
   font-size: 18px;
@@ -1929,8 +1943,7 @@ th {
   position: fixed;
   height: 30rem;
   width: 90%;
-  background-color: #A0C9C5;
-  border: 5px solid #3C4043;
+  background-color: #23af5b;
   border-radius: 5px;
   top: 9vh;
   left: 5%;
@@ -2009,10 +2022,16 @@ th {
 
 .main-menu-list__active a {
   font-family: "Anton";
-  color: #3C4043;
+  color: #F1F3F4;
   font-size: 30px;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
   margin: auto;
   padding: 10px 80px;
+}
+
+.main-menu-list__active a:hover {
+  font-size: 33px;
 }
 
 .main-header__item3 {
@@ -2035,9 +2054,15 @@ th {
 }
 
 .main-header__item3 a {
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
   color: #3C4043;
   margin: 0 0.5rem;
   font-size: 10px;
+}
+
+.main-header__item3 a:hover {
+  font-size: 11px;
 }
 
 .main-header__item3:hover {
@@ -2045,6 +2070,8 @@ th {
 }
 
 .main-header__item3__active {
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
   position: fixed;
   height: 5rem;
   width: 90%;
@@ -2060,28 +2087,43 @@ th {
 }
 
 .main-header__item3__active__first {
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
   font-family: raleway;
-  color: #3C4043;
+  color: #F1F3F4;
   font-size: 15px;
   grid-column-start: 2;
 }
 
+.main-header__item3__active__first:hover {
+  font-size: 18px;
+}
+
 .main-header__item3__active__second {
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
   font-family: raleway;
-  color: #3C4043;
+  color: #F1F3F4;
   font-size: 15px;
   grid-column-start: 3;
 }
 
+.main-header__item3__active__second:hover {
+  font-size: 18px;
+}
+
 .main-header__item3__active__third {
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
   font-family: raleway;
-  color: #3C4043;
+  color: #F1F3F4;
   font-size: 18px;
   grid-column-start: 4;
 }
 
 .main-header__item3__active__third:hover {
   cursor: pointer;
+  font-size: 18px;
 }
 
 .main-header__item4 {
@@ -2133,6 +2175,8 @@ th {
 }
 
 .main-header__social a {
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
   border-radius: 30%;
   color: #3C4043;
   display: -webkit-box;
